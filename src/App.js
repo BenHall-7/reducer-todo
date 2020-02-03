@@ -1,8 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useReducer } from 'react';
 import './App.css';
 
 function App() {
+  const [todos, dispatch] = useReducer(reducer, initialState);
+
   return (
     <div className="App">
       
