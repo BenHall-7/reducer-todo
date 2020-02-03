@@ -10,14 +10,24 @@ const AddTodo = ({dispatch}) => {
                 value={input}
                 onChange={ev => setInput(ev.target.value)}
             />
-            <button onClick={() => {
+            <button onClick={ev => {
+                ev.preventDefault();
+                if (input.length === 0) {
+                    return;
+                }
                 dispatch({
-                    type:"ADD_TODO",
+                    type: "ADD_TODO",
                     payload: {
                         item: input,
                     }
                 })
             }}>Add Todo</button>
+            <button onClick={ev => {
+                ev.preventDefault();
+                dispatch({
+                    type: "CLEAR_COMPLETED"
+                })
+            }}>Clear Completed</button>
         </form>
     )
 }

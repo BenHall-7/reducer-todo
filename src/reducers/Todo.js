@@ -19,15 +19,38 @@ export const initialTodos = {
 export function reduceTodo(state, action) {
   switch (action.type) {
     case "ADD_TODO": {
-      return {
-        ...state,
-        todos: [...state.todos, {
+      let todos = [
+        ...state.todos,
+        {
           item: action.payload.item,
           completed: false,
-          id: Date.now(),//TODO: Fix
-        }]
+          id: Date.now(),
+        }
+      ];
+      return {
+        ...state,
+        todos
       }
     }
+    case "TOGGLE_COMPLETED": {
+      let todos = [...state.todos];
+      todos.forEach(todo => {
+        if (todo.id === action.payload.id) {
+          todo.completed = true;
+        }
+      })
+      return {
+        ...state,
+        todos
+      }
+    }
+    case "CLEAR_COMPLETED": {
+      let todos = state.todos.filter(todo => !todo.completed);
+      return {
+        ...state,
+        todos
+      }
+    }
+    default: return state;
   }
-  return state;
 }

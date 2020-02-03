@@ -2,15 +2,13 @@ import React from 'react';
 
 const Todo = ({item, completed, id, dispatch}) => {
     return (
-        <div className="todo"
+        <div className={completed ? "todo complete" : "todo"}
             onClick={() => {
-
+                dispatch({type: "TOGGLE_COMPLETED", payload: {id}})
             }}
         >
             <p>#{id}</p>
-            <p style={{
-                textDecoration: completed ? "linethrough" : "none",
-            }}>{item}</p>
+            <p>{item}</p>
         </div>
     )
 }
