@@ -1,3 +1,9 @@
 .App {
   text-align: center;
 }
+
+.todo {
+  background: orange;
+  margin: 10px auto;
+  max-width: 80%;
+}

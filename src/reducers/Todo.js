@@ -17,13 +17,17 @@ export const initialTodos = {
 };
 
 export function reduceTodo(state, action) {
-  // switch (action.type) {
-  //   case "ADD_TODO": {
-  //     return {
-  //       ...state,
-  //       todos: [...state.todos, action.payload]
-  //     }
-  //   }
-  // }
+  switch (action.type) {
+    case "ADD_TODO": {
+      return {
+        ...state,
+        todos: [...state.todos, {
+          item: action.payload.item,
+          completed: false,
+          id: Date.now(),//TODO: Fix
+        }]
+      }
+    }
+  }
   return state;
 }
